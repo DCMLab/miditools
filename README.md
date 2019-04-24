@@ -40,10 +40,11 @@ chmod +x midi2tpclist.sh
 
 ## Infer pitch spelling
 
-To execute `midi2tpclist` run
+To execute `midi2tpclist` run 
 
 ```bash
-midi2tpclist <input directory> <output directory>
+cd src
+./midi2tpclist <input directory> <output directory>
 ```
 
 If `<output directory>` does not exist, it gets created. Each MIDI file in `<input directory>` is converted to a CSV file with the (not named) columns:
