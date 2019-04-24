@@ -50,5 +50,6 @@ If `<output directory>` does not exist, it gets created. Each MIDI file in `<inp
 
 * `type` containing only the entry `TPCNote`
 * `onset` in MIDI ticks (I think)
-* `offset`, and
+* `offset`
+* `MIDI` containing the MIDI pitch number
 * `tpc` which contains the inferred tonal pitch class as an integer on the line of fifths. For unknown reasons, Temperley centers the line at $B\flat=0$. The output representation shifts it so that $C=0$. A dictionary is provided that maps the TPC numbers to spelled pitch strings via `divmod`. 
