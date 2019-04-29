@@ -15,7 +15,7 @@ then
 else
   echo $f
   echo "==========================="
-  ./melisma2003/mftext/mftext "$f" | ./melisma2003/meter/meter | ./melisma2003/harmony/harmony | grep TPCNote > "$output/$(basename "$f" .mid).csv"
+  ./melisma2003/mftext/mftext "$f" | ./melisma2003/meter/meter | ./melisma2003/harmony/harmony |  grep TPCNote > "$output/$(basename "$f" .mid).csv"
 fi
 done
 # remove empty files (in case something went wrong)
