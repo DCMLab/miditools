@@ -19,7 +19,7 @@ else
 fi
 done
 # remove empty files (in case something went wrong)
-#if [ -s "output/$f.csv" ]
-#then
-#  rm -f "output$f.csv"
-#fi
+if [ -s "output/$f.csv" ]
+then
+  rm -f "output$f.csv"
+fi

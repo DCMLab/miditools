@@ -68,10 +68,10 @@ def midi_on_off(file):
     
 def jsd(p, q):
     """return Jenson-Shannon divergence"""
-    p = np.asarray(p)
-    q = np.asarray(q)
+    p = np.asarray(p, dtype=float)
+    q = np.asarray(q, dtype=float)
     # normalize
     p /= p.sum()
     q /= q.sum()
     m = (p + q) / 2
-    return (entropy(p, m) + entropy(q, m)) / 2
+    return (entropy(p, m, base=2) + entropy(q, m, base=2)) / 2
