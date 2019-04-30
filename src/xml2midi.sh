@@ -20,7 +20,8 @@ do
     fpath="${file#"$input"}"
 
     # decompose path #
-    fname=$(basename "$fpath" .xml)
+    fext=${file##*.}
+    fname=$(basename "$fpath" ".$ext")
     dname=$(dirname  "$fpath")
 
     # check if file already exists in output directory #
@@ -36,7 +37,7 @@ do
         mkdir -p "$2/$dname"
 
         # process file #
-        mscore -o "$2/$dname/$fname.mid" "$input/$dname/$fname.xml"
+        mscore -o "$2/$dname/$fname.mid" "$input/$dname/$fname"
 
     fi
 
