@@ -12,7 +12,7 @@ input="$1"
 output="$2"
 
 # parsing files #
-for file in $(find "$input" -type f -name "*.xml");
+for file in $(find "$input" -type f -name "*.xml" -o -name "*.mxl" -o -name "*.musicxml");
 
 do
 
@@ -27,9 +27,10 @@ do
     if [ -f "$2/$dname/$fname.mid" ]; then
 
         # display message #
-        echo "already processed"
+        echo "already processed: $fname"
 
     else
+        echo "processing: $fname"
 
         # create needed directories #
         mkdir -p "$2/$dname"
