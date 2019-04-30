@@ -35,13 +35,16 @@ do
 
         # create needed directories #
         mkdir -p "$2/$dname"
+        echo "$2/$dname"
 
         # process file #
-        mscore -o "$output/$dname/$fname.mid" "$input/$dname/$fname"
-
+        echo "$2"
+        echo "$dname"
+        mscore -o "$2/$dname/$fname.mid" "$input/$dname/$fname"
+        echo "$2/$dname/$fname.mid"
     fi
 
     # check if output file is empty # remove file
-    [ -s "$output/$dname/$fname.mid" ] || rm -f "$output/$dname/$fname.mid"
+    [ -s "$2/$dname/$fname.mid" ] || rm -f "$2/$dname/$fname.mid"
 
 done
