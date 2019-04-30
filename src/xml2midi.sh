@@ -37,11 +37,11 @@ do
         mkdir -p "$2/$dname"
 
         # process file #
-        mscore -o "$2/$dname/$fname.mid" "$input/$dname/$fname"
+        mscore -o "$output/$dname/$fname.mid" "$input/$dname/$fname"
 
     fi
 
     # check if output file is empty # remove file
-    [ -s "$2/$dname/$fname.mid" ] || rm -f "$2/$dname/$fname.mid"
+    [ -s "$output/$dname/$fname.mid" ] || rm -f "$output/$dname/$fname.mid"
 
 done
