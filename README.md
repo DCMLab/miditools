@@ -1,75 +1,77 @@
-* # miditools
+# miditools
 
-  This repo contains several small tools to work with MIDI files.
-  The scripts are located in `./src` and do
+This repo contains several small tools to work with MIDI files.
+The scripts are located in `./src` and do
 
-  - MusicXML to MIDI conversion via MuseScore
-  - Pitch spelling inference via Melisma
+- MusicXML to MIDI conversion via MuseScore
+- Pitch spelling inference via Melisma
 
-  ## MusicXML to MIDI conversion
+## MusicXML to MIDI conversion
 
-  Convert a folder (with subdirectories) of MusicXML files to MIDI:
+For this to work MuseScore (2 or 3) has to be installed. See also: https://musescore.org/en/handbook/3/command-line-options
 
-  ```batch
-  cd src
-  ./xml2midi.sh <input dir> <output dir>
-  ```
+Convert a folder (with subdirectories) of MusicXML files to MIDI:
 
-  `<output dir>` will preserve the input directory structure.
+```batch
+cd src
+./xml2midi.sh <input dir> <output dir>
+```
 
-  ## Pitch spelling
+`<output dir>` will preserve the input directory structure.
 
-  This repo contains the code and instructions to use Temperley's pitch spelling algorithmus to infer the spelling for notes in MIDI files.
+## Pitch spelling
 
-  Link to original software Melisma: <http://www.link.cs.cmu.edu/music-analysis/>
+This repo contains the code and instructions to use Temperley's pitch spelling algorithmus to infer the spelling for notes in MIDI files.
 
-  ### Procedure
+Link to original software Melisma: <http://www.link.cs.cmu.edu/music-analysis/>
 
-  The library uses `mftext` to transform MIDI files into a note list representation, passes it to Temperley's `meter` function to infer a metrical grid which is used for the spelling algorithm. It is subsequently passed to the `harmony` module that infers the spelled pitches among other things.
+### Procedure
 
-  ### Installation
+The library uses `mftext` to transform MIDI files into a note list representation, passes it to Temperley's `meter` function to infer a metrical grid which is used for the spelling algorithm. It is subsequently passed to the `harmony` module that infers the spelled pitches among other things.
 
-  To install `mftext` which converts MIDI files into note lists:
+### Installation
 
-  ```bash
-  cd src/melisma2003/mftext
-  make
-  ```
+To install `mftext` which converts MIDI files into note lists:
 
-  To install Temperley's meter inference tool:
+```bash
+cd src/melisma2003/mftext
+make
+```
 
-  ```bash
-  cd src/melisma2003/meter
-  make
-  ```
+To install Temperley's meter inference tool:
 
-  To install the harmony tool that (among other things) infers the pitch spelling from a note list with MIDI numbers:
+```bash
+cd src/melisma2003/meter
+make
+```
 
-  ```bash
-  cd src/melisma2003/harmony
-  make
-  ```
+To install the harmony tool that (among other things) infers the pitch spelling from a note list with MIDI numbers:
 
-  To make the pitch speller executable, run
+```bash
+cd src/melisma2003/harmony
+make
+```
 
-  ```bash
-  cd src
-  chmod +x midi2tpclist.sh
-  ```
+To make the pitch speller executable, run
 
-  ### Infer pitch spelling
+```bash
+cd src
+chmod +x midi2tpclist.sh
+```
 
-  To execute `midi2tpclist` run 
+### Infer pitch spelling
 
-  ```bash
-  cd src
-  ./midi2tpclist <input directory> <output directory>
-  ```
+To execute `midi2tpclist` run 
 
-  If `<output directory>` does not exist, it gets created. Each MIDI file in `<input directory>` is converted to a CSV file with the (not named) columns:
+```bash
+cd src
+./midi2tpclist <input directory> <output directory>
+```
 
-  - `type` containing only the entry `TPCNote`
-  - `onset` in MIDI ticks (I think)
-  - `offset`
-  - `MIDI` containing the MIDI pitch number
-  - `tpc` which contains the inferred tonal pitch class as an integer on the line of fifths. For unknown reasons, Temperley centers the line at $B\flat=0$. The output representation shifts it so that $C=0$. A dictionary is provided that maps the TPC numbers to spelled pitch strings via `divmod`. 
+If `<output directory>` does not exist, it gets created. Each MIDI file in `<input directory>` is converted to a CSV file with the (not named) columns:
+
+- `type` containing only the entry `TPCNote`
+- `onset` in MIDI ticks (I think)
+- `offset`
+- `MIDI` containing the MIDI pitch number
+- `tpc` which contains the inferred tonal pitch class as an integer on the line of fifths. For unknown reasons, Temperley centers the line at $B\flat=0$. The output representation shifts it so that $C=0$. A dictionary is provided that maps the TPC numbers to spelled pitch strings via `divmod`. 
