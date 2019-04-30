@@ -1,10 +1,21 @@
 # miditools
 
 This repo contains several small tools to work with MIDI files.
+The scripts are located in `./src` and do
+
+* MusicXML to MIDI conversion via MuseScore
+* Pitch spelling inference via Melisma
 
 ## MusicXML to MIDI conversion
 
-MusicXML to MIDI conversion with MuseScore.
+Convert a folder (with subdirectories) of MusicXML files to MIDI:
+
+```batch
+cd src
+./xml2midi.sh <input dir> <output dir>
+```
+
+`<output dir>` will preserve the input directory structure.
 
 ## Pitch spelling
 

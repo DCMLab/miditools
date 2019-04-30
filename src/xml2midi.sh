@@ -1,5 +1,4 @@
-
-##!/bin/sh
+##!/bin/bash
 
 # only split lines at new lines #
 IFS=$'
@@ -13,13 +12,12 @@ input="$1"
 output="$2"
 
 # parsing files #
-for file in $(find $input -type f -name "*.xml"); do
+for file in $(find "$input" -type f -name "*.xml");
+
+do
 
     # remove first directory of file path #
     fpath="${file#"$input"}"
-
-
-    echo "$fpath - $file"
 
     # decompose path #
     fname=$(basename "$fpath" .xml)
