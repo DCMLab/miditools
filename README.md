@@ -1,14 +1,22 @@
-# pitchspelling
+# miditools
+
+This repo contains several small tools to work with MIDI files.
+
+## MusicXML to MIDI conversion
+
+MusicXML to MIDI conversion with MuseScore.
+
+## Pitch spelling
 
 This repo contains the code and instructions to use Temperley's pitch spelling algorithmus to infer the spelling for notes in MIDI files.
 
 Link to original software Melisma: <http://www.link.cs.cmu.edu/music-analysis/>
 
-## Procedure
+### Procedure
 
 The library uses `mftext` to transform MIDI files into a note list representation, passes it to Temperley's `meter` function to infer a metrical grid which is used for the spelling algorithm. It is subsequently passed to the `harmony` module that infers the spelled pitches among other things.
 
-## Installation
+### Installation
 
 To install `mftext` which converts MIDI files into note lists:
 
@@ -38,7 +46,7 @@ cd src
 chmod +x midi2tpclist.sh
 ```
 
-## Infer pitch spelling
+### Infer pitch spelling
 
 To execute `midi2tpclist` run 
 
